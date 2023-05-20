@@ -130,12 +130,14 @@ set maxmem=2000000
 set maxmemtot=2000000
 set maxmempattern=2000000
 set laststatus=2
-set statusline=%<%f
+set statusline=%<%F
 set statusline+=\ %w%h%m%r%=
-set statusline+=\ [%{getcwd()}]
-set statusline+=\ %{&fileencoding}\[%{&fileformat}]
-set statusline+=\ enc=%{&encoding}
-set statusline+=\ %5b\ (0x-4%B)\ %l,%c%V\ %P
+set statusline+=%1*\ %*%{&fileencoding}\[%{&fileformat}]
+set statusline+=%1*\ %*enc=%{&encoding}
+set statusline+=%1*\ %*%04.(%{&filetype}%)
+set statusline+=%1*\ %*%012.(%b(0x%04B)%)
+set statusline+=%1*\ %*%015.(L:%l/%L%)\ %-5.(C:%v%)
+set statusline+=%1*\ %*%P
 set nottyfast
 set hidden
 set lazyredraw
@@ -195,7 +197,7 @@ nnoremap <silent> <CR> :nohlsearch<CR><CR>
 " KEY MAPPINGS {{{
 set pastetoggle=<F2>
 map  <F12> :if &guioptions=~'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-map  <C-F12> :e $MYVIMRC<CR>
+map  <S-F12> :e $MYVIMRC<CR>
 nmap <Leader>b :bnext<CR>
 nmap <Leader>B :bprev<CR>
 nmap <Leader>e :enew<CR>

@@ -8,6 +8,8 @@ if has('multi_byte')
   scriptencoding utf-8
   set fileencodings=ucs-bom,utf-8,cp1251,cp866,koi8-r
 endif
+syntax on
+filetype indent on
 " }}}
 
 " HELPERS {{{
